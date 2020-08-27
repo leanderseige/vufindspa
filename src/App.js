@@ -8,7 +8,6 @@ import ResultList from './components/ResultList.js';
 import FacetList from './components/FacetList.js';
 import TitleView from './components/TitleView.js';
 import LogoAndSearchService from './components/LogoAndSearchService.js'
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import store from './store';
 
