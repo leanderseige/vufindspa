@@ -1,6 +1,6 @@
-#VuFindSPA
+# VuFindSPA
 
-Blah Blah
+This is an experimental SPA and PWA for VuFind.
 
 ## Quick Start
 
