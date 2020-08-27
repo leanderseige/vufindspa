@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
-import TextField from '@material-ui/core/TextField';
 import Facet from './Facet.js';
 import store from '../store.js';
 
