@@ -1,0 +1,110 @@
+$r1h: 10vh;
+$r2h: 5vh;
+$r3h: 84vh;
+$c1w: 30vw;
+$c2w: 69vw;
+$pad1: 1vh;
+$pad2: 2vh;
+$pad3: 3vh;
+
+.App {
+  text-align: left;
+  grid-template-columns: $c1w $c2w;
+  grid-template-rows: $r1h $r2h $r3h;
+  width:99vw;
+  height:99vh;
+  margin:0px;
+  padding:0px;
+  display: grid;
+  z-index: 10;
+}
+
+.Logo {
+    grid-column: 1;
+    grid-row: 1;
+    width:$c1w;
+    border:0px solid blue;
+    margin:0px;
+    padding:$pad3;
+    display: grid;
+    z-index: 20;
+}
+
+.SearchBar {
+    grid-column: 2;
+    grid-row: 1;
+    width:$c2w;
+    border:0px solid red;
+    margin:0px;
+    padding:$pad3;
+    display: grid;
+    z-index: 20;
+}
+
+.StatusBar {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    width:100%;
+    height:20px;
+    border:0px solid blue;
+    background-color: #ccc;
+    padding: $pad1 $pad1 $pad1 $pad3;
+    display: grid;
+    z-index: 20;
+}
+
+.ResultList {
+    grid-column: 2;
+    grid-row: 3;
+    width:$c2w;
+    height:$r3h;
+    border:0px solid green;
+    display: grid;
+    overflow: scroll;
+    z-index: 20;
+}
+
+.Facets {
+    grid-column: 1;
+    grid-row: 3;
+    display: grid;
+    padding: $pad1 $pad1 $pad1 $pad3;
+    overflow: scroll;
+    z-index: 20;
+}
+
+.TitleView {
+    width:90vw;
+    padding:$pad3;
+}
+
+.stdui {
+    height:40px;
+}
+
+.listitem {
+    width: 80%;
+    padding:10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.mainlogo {
+    font-weight: bolder;
+    font-size: 32px;
+    padding-right: 10px;
+}
+
+.logoimg {
+    padding:5px;
+    height:30px;
+    display:inline-block;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+a {
+    color:black;
+    text-decoration: underline;
+}
