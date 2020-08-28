@@ -35,8 +35,9 @@ class LogoAndSearchService extends React.Component {
             .catch(console.log)
 
         return (
-            <img src={logo} className="logoimg" />
-            // <span className="mainlogo">VuFindSPA</span>
+            <span>
+                <img src={logo} className="logoimg" />
+            </span>
         );
     }
 
