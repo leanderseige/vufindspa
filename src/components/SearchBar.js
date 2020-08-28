@@ -17,42 +17,34 @@ class ImportLoader extends React.Component {
       };
   }
 
-    handleSubmit(event) {
+  handleSubmit(event) {
       event.preventDefault();
       const data = new FormData(event.target);
       this.props.addCallback(data.get('input_add'));
-    }
+  }
 
-    _handleTextFieldChange(e) {
-     this.setState({
-         textFieldValue: e.target.value
-     });
-    }
+  _handleTextFieldChange(e) {
+      this.setState({
+          textFieldValue: e.target.value
+      });
+  }
 
-     _handleSelectChange(e) {
-         this.setState({
-             selectValue: e.target.value
-         });
-     }
+  _handleSelectChange(e) {
+      this.setState({
+          selectValue: e.target.value
+      });
+  }
 
   _handleButtonClick(e) {
-    console.log(this.state.textFieldValue);
+      console.log(this.state.textFieldValue);
 
-    store.dispatch({type: 'SET_SEARCH_LOOKFOR',data: {
-        lookfor: this.state.textFieldValue,
-        type: this.state.selectValue
-    }});
-
-    // var url =   "https://vufind.org/advanced_demo/api/v1/search?lookfor=" +
-    //             this.state.textFieldValue +
-    //             "&type=AllFields&sort=relevance&page=1&limit=20&prettyPrint=false&lng=en"
-    // fetch(url)
-    //     .then(res => res.json())
-    //     .then((data) => {
-    //         console.log(data)
-    //       store.dispatch({type: 'SET_RESULTS',data: { results: data }});
-    //     })
-    //     .catch(console.log)
+      store.dispatch({
+          type: 'SET_SEARCH_LOOKFOR',
+          data: {
+              lookfor: this.state.textFieldValue,
+              type: this.state.selectValue
+          }
+      });
   }
 
   componentDidMount() {
@@ -60,7 +52,7 @@ class ImportLoader extends React.Component {
 
   render() {
     return (
-      <div className="fullwidth">
+      <div>
         <TextField  InputProps={{className: "stdui"}} size="small" id="outlined-basic" label="Search" variant="outlined" onChange={this._handleTextFieldChange} />
         <Select
             variant="outlined"
