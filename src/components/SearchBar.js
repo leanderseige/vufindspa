@@ -52,11 +52,9 @@ class ImportLoader extends React.Component {
 
   render() {
 
-// <TextField InputProps={{className: "stdui"}} size="small" id="outlined-basic" label="Search" variant="outlined" onChange={this._handleTextFieldChange} />
-
     return (
       <div>
-        <input  onChange={this._handleTextFieldChange} />
+        <TextField InputProps={{className: "stdui"}} size="small" id="outlined-basic" label="Search" variant="outlined" onChange={this._handleTextFieldChange} />
         <Select
             variant="outlined"
             className="stdui"
