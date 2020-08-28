@@ -52,7 +52,7 @@ class ListItem extends React.Component {
             <CardContent>
                 <Link  variant="subtitle1" color="primary" onClick={() => {this._handleOpenClick(rec.id)}}>{rec.title.replace(/\/$/g,'')}</Link>
                 <Typography>{authors.join(', ')}</Typography>
-                <Typography>{urls}</Typography>
+                {urls}
             </CardContent>
         </Card>
       );
