@@ -26,3 +26,7 @@ Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 Further info in [[CRA-README.md]]
+
+## Known Bugs
+
+* Android's Keyboard ruins layout, use iOS or just fix the responsivness
