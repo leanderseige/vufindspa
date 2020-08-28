@@ -8,10 +8,6 @@
     $mpad2: 2vh;
     $mpad3: 3vh;
 
-    html {
-        background-color: red;
-    }
-
     .App {
       grid-template-columns: $mc1w;
       grid-template-rows: $mr1h $mr2h 1fr;
