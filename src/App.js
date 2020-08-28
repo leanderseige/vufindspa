@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import './styles-mobile.scss';
 import './styles.scss';
+import './styles-mobile.scss';
 import SearchBar from './components/SearchBar.js';
 import StatusBar from './components/StatusBar.js';
 import ResultList from './components/ResultList.js';
