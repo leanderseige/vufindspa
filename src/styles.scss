@@ -16,7 +16,7 @@ html {
   grid-template-columns: $c1w $c2w;
   grid-template-rows: $r1h $r2h 1fr;
   width:99vw;
-  height:99vh;
+  height: calc(var(--vh, 1vh) * 100);
   margin:0;
   padding:0;
   display: grid;
