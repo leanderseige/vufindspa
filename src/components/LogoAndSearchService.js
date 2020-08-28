@@ -30,7 +30,8 @@ class LogoAndSearchService extends React.Component {
             .then(res => res.json())
             .then((data) => {
                 console.log(data)
-                store.dispatch({type: 'SET_RESULTS',data: { results: data }});
+                store.dispatch({type: 'SET_RESULTS',data: { results: data }})
+                store.dispatch({ type: 'SET_FLAGS', data: { loading: false }})
             })
             .catch(console.log)
 

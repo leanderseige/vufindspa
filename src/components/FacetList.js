@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Loader from 'react-loader-spinner'
 import Facet from './Facet.js';
 import store from '../store.js';
 
@@ -14,17 +15,21 @@ class FacetList extends React.Component {
     }
 
     handleClear() {
+        store.dispatch({ type: 'SET_FLAGS', data: { loading: true }})
         store.dispatch({type: 'CLR_SEARCH_FILTER'});
     }
 
     handleRemove(filter)  {
-        store.dispatch({type: 'REM_SEARCH_FILTER',data: {
-            filter: filter
-        }});
+        store.dispatch({ type: 'SET_FLAGS', data: { loading: true }})
+        store.dispatch({type: 'REM_SEARCH_FILTER',data: { filter: filter}});
     }
 
 
     render() {
+
+        // if(this.props.flags.loading) {
+        //     return(<Loader type="Grid" color="#ccc" height={100} width={100} className="allauto" />)
+        // }
 
         var output = [];
 
@@ -67,7 +72,8 @@ class FacetList extends React.Component {
 function mapStateToProps(state) {
     return {
         search: state.search,
-        results: state.results
+        results: state.results,
+        flags: state.flags
     }
 }
 

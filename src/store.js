@@ -61,6 +61,11 @@ function reducer(state, action) {
             return Object.assign({}, state, { item_id: action.data.id } );
         }
 
+        case 'SET_FLAGS': {
+            var temp_flags = Object.assign({}, state.flags, action.data );
+            return Object.assign({}, state, { flags: temp_flags } );
+        }
+
         default : {
             return state
         }
@@ -79,7 +84,11 @@ const initial_state = {
     },
     results: {},
     item_id: false,
-    item_data: false
+    item_data: false,
+    flags: {
+        loading: true,
+        appending: false
+    }
 }
 
 const enhancers = compose(

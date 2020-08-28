@@ -24,6 +24,10 @@ class ResultList extends React.Component {
 
     render() {
 
+        if(this.props.flags.loading) {
+            return(<Loader type="Oval" color="#ccc" height={100} width={100} className="allauto" />)
+        }
+
         var output = [];
 
         for (var key in this.props.results.records) {
@@ -44,7 +48,8 @@ class ResultList extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        results: state.results
+        results: state.results,
+        flags: state.flags
     }
 }
 
