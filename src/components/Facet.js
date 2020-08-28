@@ -6,6 +6,7 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import store from '../store.js';
 import url from 'url';
@@ -27,15 +28,21 @@ class Facet extends React.Component {
 
     render() {
 
+        const labels = {
+            author_facet: 'Author',
+            genre_facet: 'Genre',
+            topic_facet: 'Topic'
+        }
+
         var output = [];
 
         for (var key in this.props.data) {
             let urlObject = url.parse(this.props.data[key].href,false);
             output.push(
-                <p>
-                    <a onClick={() => {this._handleClick(urlObject.query)}}>{this.props.data[key].value}</a>
-                    ({this.props.data[key].count})
-                </p>
+                <Typography>
+                    <Link color="primary" onClick={() => {this._handleClick(urlObject.query)}}>{this.props.data[key].value}</Link>
+                    ({this.props.data[key].count})<br /><br />
+                </Typography>
             );
         }
 
@@ -43,7 +50,7 @@ class Facet extends React.Component {
           <div>
           <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>{this.props.name}</Typography>
+                <Typography>{labels[this.props.name]}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <div>{output}</div>

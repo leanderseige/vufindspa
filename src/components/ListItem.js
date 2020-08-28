@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import store from '../store.js';
 
 class ListItem extends React.Component {
@@ -37,14 +38,21 @@ class ListItem extends React.Component {
       for(var key in rec.authors.secondary) {
           authors.push(key)
       }
+      var urls = []
+      for(var key in rec.urls) {
+          urls.push(
+              <Typography color="secondary">
+              <Link color="secondary" href={rec.urls[key].url} target="_blank">{rec.urls[key].desc}</Link>
+              </Typography>
+          )
+      }
 
       return (
         <Card>
             <CardContent>
-                <Typography gutterBottom color="primary">
-                    <a onClick={() => {this._handleOpenClick(rec.id)}}>{rec.title.replace(/\/$/g,'')}</a>
-                </Typography>
+                <Link  variant="subtitle1" color="primary" onClick={() => {this._handleOpenClick(rec.id)}}>{rec.title.replace(/\/$/g,'')}</Link>
                 <Typography>{authors.join(', ')}</Typography>
+                <Typography>{urls}</Typography>
             </CardContent>
         </Card>
       );

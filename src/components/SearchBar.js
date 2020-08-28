@@ -57,10 +57,10 @@ class ImportLoader extends React.Component {
         <Select
             variant="outlined"
             className="stdui"
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={this.state.selectValue}
-          onChange={this._handleSelectChange}
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={this.state.selectValue}
+            onChange={this._handleSelectChange}
         >
           <MenuItem value={"AllFields"}>AllFields</MenuItem>
           <MenuItem value={"Title"}>Title</MenuItem>

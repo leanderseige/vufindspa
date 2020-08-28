@@ -1,4 +1,4 @@
-$r1h: 12vh;
+$r1h: 80px;
 $r2h: 5vh;
 $r3h: 82vh;
 $c1w: 30vw;
@@ -10,7 +10,7 @@ $pad3: 3vh;
 .App {
   text-align: left;
   grid-template-columns: $c1w $c2w;
-  grid-template-rows: $r1h $r2h $r3h;
+  grid-template-rows: $r1h $r2h 1fr;
   width:99vw;
   height:99vh;
   margin:0;
@@ -80,12 +80,16 @@ $pad3: 3vh;
 }
 
 .logoimg {
-    padding-top: $pad1;
-    height: 5vh;
+    padding-top: 0;
+    max-height: 38px;
     max-width: $c1w;
     display:inline-block;
 }
 
 .fullwidth {
     width: 100%;
+}
+
+a {
+    text-decoration: none;
 }

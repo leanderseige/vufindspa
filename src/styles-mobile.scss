@@ -1,6 +1,6 @@
 @media (max-aspect-ratio: 3/4) {
 
-    $mr1h: 12vh;
+    $mr1h: 55px;
     $mr2h: 5vh;
     $mr3h: 82vh;
     $mc1w: 99vw;
@@ -10,7 +10,7 @@
 
     .App {
       grid-template-columns: $mc1w;
-      grid-template-rows: $mr1h $mr2h $mr3h;
+      grid-template-rows: $mr1h $mr2h 1fr;
       width:99vw;
       height:99vh;
       margin:0;
