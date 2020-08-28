@@ -1,20 +1,20 @@
 @media (max-aspect-ratio: 3/4) {
 
-    $r1h: 10vh;
-    $r2h: 5vh;
-    $r3h: 84vh;
-    $c1w: 99vw;
-    $pad1: 1vh;
-    $pad2: 2vh;
-    $pad3: 3vh;
+    $mr1h: 12vh;
+    $mr2h: 5vh;
+    $mr3h: 82vh;
+    $mc1w: 99vw;
+    $mpad1: 1vh;
+    $mpad2: 2vh;
+    $mpad3: 3vh;
 
     .App {
-      grid-template-columns: $c1w;
-      grid-template-rows: $r1h $r2h $r3h;
+      grid-template-columns: $mc1w;
+      grid-template-rows: $mr1h $mr2h $mr3h;
       width:99vw;
       height:99vh;
-      margin:0px;
-      padding:0px;
+      margin:0;
+      padding:0;
       display: grid;
       z-index: 10;
     }
@@ -26,11 +26,9 @@
     .SearchBar {
         grid-column: 1;
         grid-row: 1;
-        width:$c1w;
-        height:$r1h;
-        padding:$pad1;
+        padding:$mpad1;
         border:0px solid red;
-        margin:0px;
+        margin:0;
         display: grid;
         z-index: 20;
     }
@@ -38,11 +36,9 @@
     .StatusBar {
         grid-column: 1;
         grid-row: 2;
-        width:100%;
-        height:$r2h;
         border:0px solid blue;
         background-color: #ccc;
-        padding: $pad1;
+        padding: $mpad1;
         display: grid;
         z-index: 20;
     }
@@ -50,8 +46,6 @@
     .ResultList {
         grid-column: 1;
         grid-row: 3;
-        width:$c1w;
-        height:$r3h;
         border:0px solid green;
         display: grid;
         overflow: scroll;
@@ -62,18 +56,18 @@
         grid-column: 1;
         grid-row: 3;
         display: none;
-        padding: $pad1 $pad1 $pad1 $pad3;
+        padding: $mpad1 $mpad1 $mpad1 $mpad3;
         overflow: scroll;
         z-index: 20;
     }
 
     .TitleView {
         width:90vw;
-        padding:$pad3;
+        padding:$mpad3;
     }
 
     .stdui {
-        width:31vw;
+        width:30vw;
     }
 
     .logoimg {
