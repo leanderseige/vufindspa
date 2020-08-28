@@ -56,7 +56,7 @@ class ImportLoader extends React.Component {
 
     return (
       <div>
-        <TextField  onChange={this._handleTextFieldChange} />        
+        <input  onChange={this._handleTextFieldChange} />
         <Select
             variant="outlined"
             className="stdui"
