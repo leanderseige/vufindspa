@@ -45,7 +45,7 @@ class TitleView extends React.Component {
 
       return (
         <Dialog onClose={() => {this.handleClose()}} aria-labelledby="simple-dialog-title" open={open} fullScreen TransitionComponent={Transition}>
-            <div className="TitleView">
+            <div>
             {output}
             <Button onClick={() => {this.handleClose()}} color="primary">
                 CLOSE

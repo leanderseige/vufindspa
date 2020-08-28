@@ -33,7 +33,7 @@ class ResultList extends React.Component {
         }
 
         return (
-          <div className="ResultList" onScroll={this.handleScroll}>
+          <div onScroll={this.handleScroll}>
             {output}
           </div>
         );

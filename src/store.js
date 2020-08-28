@@ -69,7 +69,7 @@ function reducer(state, action) {
 
 const initial_state = {
     search: {
-        lookfor: '',
+        lookfor: 'Goethe',
         type: 'AllFields',
         sort: 'relevance',
         page: 1,

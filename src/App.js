@@ -24,11 +24,15 @@ function App() {
             <div className="StatusBar" >
                 <StatusBar />
             </div>
-            <ResultList />
+            <div className="ResultList" >
+                <ResultList />
+            </div>
             <div className="Facets">
                 <FacetList />
             </div>
-            <TitleView />
+            <div className="TitleView">
+                <TitleView />
+            </div>
         </div>
     </Provider>
   );

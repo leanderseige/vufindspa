@@ -1,5 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import store from '../store.js';
 
 class ListItem extends React.Component {
@@ -35,12 +39,14 @@ class ListItem extends React.Component {
       }
 
       return (
-        <div className="listitem" key={idx} >
-            <h3>
-                <a onClick={() => {this._handleOpenClick(rec.id)}}>{rec.title.replace(/\/$/g,'')}</a>
-            </h3>
-            <p>{authors.join(', ')}</p>
-        </div>
+        <Card>
+            <CardContent>
+                <Typography gutterBottom color="primary">
+                    <a onClick={() => {this._handleOpenClick(rec.id)}}>{rec.title.replace(/\/$/g,'')}</a>
+                </Typography>
+                <Typography>{authors.join(', ')}</Typography>
+            </CardContent>
+        </Card>
       );
     }
 }

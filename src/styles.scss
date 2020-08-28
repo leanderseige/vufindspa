@@ -13,8 +13,8 @@ $pad3: 3vh;
   grid-template-rows: $r1h $r2h $r3h;
   width:99vw;
   height:99vh;
-  margin:0px;
-  padding:0px;
+  margin:0;
+  padding:0;
   display: grid;
   z-index: 10;
 }
@@ -82,12 +82,6 @@ $pad3: 3vh;
     height:40px;
 }
 
-.listitem {
-    width: 80%;
-    padding:10px;
-    border-bottom: 1px solid #ccc;
-}
-
 .mainlogo {
     font-weight: bolder;
     font-size: 32px;
@@ -102,9 +96,4 @@ $pad3: 3vh;
 
 .fullwidth {
     width: 100%;
-}
-
-a {
-    color:black;
-    text-decoration: underline;
 }
