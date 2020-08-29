@@ -8,6 +8,7 @@ function reducer(state, action) {
             var temp_search = Object.assign({}, state.search)
             temp_search.lookfor = action.data.lookfor
             temp_search.type = action.data.type
+            temp_search.page = 1
             temp_search.filter = []
             return Object.assign({}, state, { search: temp_search } );
         }
@@ -27,6 +28,7 @@ function reducer(state, action) {
         case 'ADD_SEARCH_FILTER': {
             var temp_search = Object.assign({}, state.search)
             temp_search.filter = [...action.data.filter, ...temp_search.filter]
+            temp_search.page = 1
             return Object.assign({}, state, { search: temp_search } );
         }
 
