@@ -16,6 +16,7 @@ class LogoAndSearchService extends React.Component {
         var facets=''
         this.props.search.facets.forEach(f => facets+="&facet%5B%5D="+f);
 
+        // var url =   "https://library.villanova.edu/Find/api/v1/search" +
         var url =   "https://vufind.org/advanced_demo/api/v1/search" +
                     "?lookfor=" + this.props.search.lookfor +
                     facets +

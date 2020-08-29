@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import store from '../store.js';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import IconButton from '@material-ui/core/IconButton';
-import store from '../store.js';
+import Badge from '@material-ui/core/Badge';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
 class StatusBar extends React.Component {
 
@@ -19,12 +22,16 @@ class StatusBar extends React.Component {
 
     render() {
         return (
-          <div>
-              <IconButton aria-label="bookmark" onClick={() => {this._handleOpenClick()}}>
-                <BookmarkIcon />
-              </IconButton>
-            Results: {this.props.results.resultCount}
-          </div>
+            <AppBar position="static">
+                <Toolbar>
+                    Results: {this.props.results.resultCount}
+                    <IconButton color="inherit" onClick={() => {this._handleOpenClick()}}>
+                        <Badge badgeContent={Object.keys(this.props.bookmarks).length} color="secondary">
+                            <BookmarkIcon color="white" />
+                        </Badge>
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
         );
     }
 
@@ -33,7 +40,8 @@ class StatusBar extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        results: state.results
+        results: state.results,
+        bookmarks: state.bookmarks
     }
 }
 

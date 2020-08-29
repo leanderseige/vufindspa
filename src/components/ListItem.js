@@ -77,18 +77,14 @@ class ListItem extends React.Component {
       }
 
       return (
-        <Card>
+        <Card className="listitem">
             <CardHeader
                 avatar={
                   <Avatar aria-label="recipe">
                     {rec.formats[0].charAt(0)}
                   </Avatar>
                 }
-                action={
-                    <IconButton aria-label="bookmark" onClick={() => {this._handleAddBookClick(rec)}}>
-                        {bmicon}
-                    </IconButton>
-                }
+                action={bmicon}
                 title={
                     <Link  variant="subtitle1" color="primary" onClick={() => {this._handleOpenClick(rec.id)}}>
                         {rec.title.replace(/\/$/g,'')}

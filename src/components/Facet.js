@@ -47,7 +47,7 @@ class Facet extends React.Component {
         }
 
         return (
-          <div>
+          <div className="listitem">
           <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography>{labels[this.props.name]}</Typography>
@@ -55,8 +55,8 @@ class Facet extends React.Component {
             <AccordionDetails>
                 <div>{output}</div>
             </AccordionDetails>
-        </Accordion>
-        </div>
+            </Accordion>
+            </div>
         );
     }
 

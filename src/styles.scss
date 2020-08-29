@@ -1,8 +1,8 @@
 $r1h: 80px;
-$r2h: 5vh;
-$r3h: 82vh;
+$r2h: 64px;
+// $r3h: 82vh;
 $c1w: 30vw;
-$c2w: 69vw;
+$c2w: 70vw;
 $pad1: 1vh;
 $pad2: 2vh;
 $pad3: 3vh;
@@ -44,7 +44,7 @@ $pad3: 3vh;
     grid-row: 2;
     border:0px solid blue;
     background-color: #eee;
-    padding-left: $pad3;
+    // padding-left: $pad3;
     display: grid;
     z-index: 20;
 }
@@ -55,6 +55,7 @@ $pad3: 3vh;
     border:0px solid green;
     display: grid;
     overflow: scroll;
+    padding: $pad1 $pad2 $pad1 $pad1;
     z-index: 20;
 }
 
@@ -69,7 +70,6 @@ $pad3: 3vh;
 
 .TitleView {
     width:90vw;
-    padding:$pad3;
 }
 
 .stdui {
@@ -98,4 +98,8 @@ a {
 .allauto {
     margin:auto;
     padding-right:$c1w;
+}
+
+.listitem {
+    margin-top:$pad1;
 }

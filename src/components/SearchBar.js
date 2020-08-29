@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import store from '../store.js';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import store from '../store.js';
 
-class ImportLoader extends React.Component {
+class SearchBar extends React.Component {
   constructor(props) {
       super(props);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,7 +55,12 @@ class ImportLoader extends React.Component {
 
     return (
       <div>
-        <TextField InputProps={{className: "stdui"}} size="small" id="outlined-basic" label="Search" variant="outlined" onChange={this._handleTextFieldChange} />
+        <TextField
+            InputProps={{className: "stdui"}}
+            size="small" id="outlined-basic" label="Search" variant="outlined"
+            onChange={this._handleTextFieldChange}
+            defaultValue={this.props.search.lookfor}
+        />
         <Select
             variant="outlined"
             className="stdui"
@@ -73,4 +79,10 @@ class ImportLoader extends React.Component {
   }
 }
 
-export default (ImportLoader)
+function mapStateToProps(state) {
+    return {
+        search: state.search
+    }
+}
+
+export default connect(mapStateToProps)(SearchBar)
