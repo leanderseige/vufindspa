@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
+import Badge from '@material-ui/core/Badge';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import IconButton from '@material-ui/core/IconButton';
@@ -87,7 +88,7 @@ class ListItem extends React.Component {
                 action={bmicon}
                 title={
                     <Link  variant="subtitle1" color="primary" onClick={() => {this._handleOpenClick(rec.id)}}>
-                        {rec.title.replace(/\/$/g,'')}
+                        {this.props.count}. {rec.title.replace(/\/$/g,'')}
                     </Link>
                 }
                 subheader={

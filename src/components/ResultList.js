@@ -10,16 +10,24 @@ class ResultList extends React.Component {
 
     constructor(props) {
         super(props);
+        this._handleButtonClick = this._handleButtonClick.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
-
     }
 
     handleScroll = (e) => {
         console.log("...scroll...")
-      const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
-      if (bottom) {
+        const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+        if (bottom) {
           console.log("trigger endless scroll")
-      }
+          if(this.props.flags.appending===false) {
+            store.dispatch({ type: 'SET_FLAGS', data: { appending: true }})
+          }
+        }
+    }
+    _handleButtonClick(e) {
+        if(this.props.flags.appending===false) {
+          store.dispatch({ type: 'SET_FLAGS', data: { appending: true }})
+        }
     }
 
     render() {
@@ -29,21 +37,27 @@ class ResultList extends React.Component {
         }
 
         var output = [];
-
+        var count = 1;
         for (var key in this.props.results.records) {
           output.push(
-            <ListItem idx={key} />
+            <ListItem idx={key} count={count} />
           );
+          count++;
         }
-
+        if(this.props.flags.appending) {
+            output.push(<Loader type="Grid" color="#ccc" height={100} width={100} className="allauto" />)
+        }
         return (
-          <div onScroll={this.handleScroll}>
-            {output}
-          </div>
+            <div onScroll={this.handleScroll}>
+                {output}
+            </div>
         );
     }
 
 }
+
+// <br />
+// <Button className="morebutton" size="large" variant="contained" color="primary" onClick={this._handleButtonClick}>More</Button>
 
 
 function mapStateToProps(state) {

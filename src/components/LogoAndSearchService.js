@@ -16,25 +16,40 @@ class LogoAndSearchService extends React.Component {
         var facets=''
         this.props.search.facets.forEach(f => facets+="&facet%5B%5D="+f);
 
-        // var url =   "https://library.villanova.edu/Find/api/v1/search" +
-        var url =   "https://vufind.org/advanced_demo/api/v1/search" +
-                    "?lookfor=" + this.props.search.lookfor +
-                    facets +
-                    this.props.search.filter.join('') +
-                    "&type=" + this.props.search.type +
-                    "&sort=" + this.props.search.sort +
-                    "&page=" + this.props.search.page +
-                    "&limit=" + this.props.search.limit +
-                    "&prettyPrint=false&lng=en"
-        console.log("querying "+url)
-        fetch(url)
-            .then(res => res.json())
-            .then((data) => {
-                console.log(data)
-                store.dispatch({type: 'SET_RESULTS',data: { results: data }})
-                store.dispatch({ type: 'SET_FLAGS', data: { loading: false }})
-            })
-            .catch(console.log)
+        if ( this.props.flags.loading===true || this.props.flags.appending===true ) {
+
+            console.log("FETCHER")
+            console.log(this.props.flags)
+
+            var page = this.props.search.page
+            if(this.props.flags.appending) {
+                page = page + 1
+            }
+
+            var url =   "https://vufind.org/advanced_demo/api/v1/search" +
+                        "?lookfor=" + this.props.search.lookfor +
+                        facets +
+                        this.props.search.filter.join('') +
+                        "&type=" + this.props.search.type +
+                        "&sort=" + this.props.search.sort +
+                        "&page=" + page +
+                        "&limit=" + this.props.search.limit +
+                        "&prettyPrint=false&lng=en"
+
+            console.log("querying "+url)
+
+            fetch(url)
+                .then(res => res.json())
+                .then((data) => {
+                    console.log(data)
+                    if(this.props.flags.appending===true) {
+                        store.dispatch({type: 'APPEND_RESULTS',data: { results: data }})
+                    } else if(this.props.flags.loading===true) {
+                        store.dispatch({type: 'SET_RESULTS',data: { results: data }})
+                    }
+                })
+                .catch(console.log)
+        }
 
         return (
             <span>
@@ -48,7 +63,8 @@ class LogoAndSearchService extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        search: state.search
+        search: state.search,
+        flags: state.flags
     }
 }
 

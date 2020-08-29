@@ -54,9 +54,13 @@ $pad3: 3vh;
     grid-row: 3;
     border:0px solid green;
     display: grid;
-    overflow: scroll;
+    overflow: hidden;
     padding: $pad1 $pad2 $pad1 $pad1;
     z-index: 20;
+}
+
+.ResultList div {
+    overflow: scroll;
 }
 
 .Facets {
@@ -102,4 +106,9 @@ a {
 
 .listitem {
     margin-top:$pad1;
+}
+
+.morebutton {
+    padding:$pad3;
+    width: 100%;
 }

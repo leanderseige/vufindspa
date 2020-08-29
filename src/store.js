@@ -50,7 +50,21 @@ function reducer(state, action) {
 
         case 'SET_RESULTS': {
             var temp_results = Object.assign({}, action.data.results)
-            return Object.assign({}, state, { results: temp_results } );
+            var temp_flags = Object.assign({}, state.flags, { loading: false, appending: false } );
+            return Object.assign({}, state, { results: temp_results, flags: temp_flags } );
+        }
+
+        case 'APPEND_RESULTS': {
+            var temp_results = Object.assign({}, state.results)
+            temp_results.records = state.results.records.concat(action.data.results.records)
+            var temp_flags = Object.assign({}, state.flags, { loading: false, appending: false } );
+            var temp_search = Object.assign({}, state.search)
+            temp_search.page = temp_search.page+1
+            return Object.assign({}, state, {
+                results: temp_results,
+                flags: temp_flags,
+                search: temp_search
+            } );
         }
 
         case 'SET_ITEM_DATA': {
@@ -85,7 +99,7 @@ function reducer(state, action) {
 
 const initial_state = {
     search: {
-        lookfor: 'Goethe',
+        lookfor: 'Shakespeare',
         type: 'AllFields',
         sort: 'relevance',
         page: 1,
