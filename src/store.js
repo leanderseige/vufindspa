@@ -66,6 +66,17 @@ function reducer(state, action) {
             return Object.assign({}, state, { flags: temp_flags } );
         }
 
+        case 'ADD_BOOKMARK': {
+            var temp_bms = Object.assign({}, state.bookmarks, action.data)
+            return Object.assign({}, state, { bookmarks: temp_bms } );
+        }
+
+        case 'REM_BOOKMARK': {
+            var temp_bms = Object.assign({}, state.bookmarks)
+            delete temp_bms[action.data.id]
+            return Object.assign({}, state, { bookmarks: temp_bms } );
+        }
+
         default : {
             return state
         }
@@ -80,15 +91,17 @@ const initial_state = {
         page: 1,
         limit: 20,
         filter: [],
-        facets: ['author_facet','genre_facet','topic_facet']
+        facets: ['author_facet','genre_facet','topic_facet','publishDate']
     },
     results: {},
     item_id: false,
     item_data: false,
     flags: {
         loading: true,
-        appending: false
-    }
+        appending: false,
+        bookmarkdialog: false
+    },
+    bookmarks: {}
 }
 
 const enhancers = compose(

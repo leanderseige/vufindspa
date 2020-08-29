@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
 import store from '../store.js';
 
@@ -12,6 +17,8 @@ class ListItem extends React.Component {
     constructor(props) {
       super(props);
       this._handleOpenClick = this._handleOpenClick.bind(this);
+      this._handleAddBookClick = this._handleAddBookClick.bind(this);
+      this._handleRemBookClick = this._handleRemBookClick.bind(this);
     }
 
     _handleOpenClick(id) {
@@ -26,6 +33,17 @@ class ListItem extends React.Component {
                 store.dispatch({type: 'SET_ITEM_DATA',data: { item_data: data }});
             })
             .catch(console.log)
+    }
+
+    _handleAddBookClick(rec) {
+        console.log(rec.id)
+        var data = {}
+        data[rec.id] = Object.assign({},rec)
+        store.dispatch({ type: 'ADD_BOOKMARK', data: data });
+    }
+
+    _handleRemBookClick(rec) {
+        store.dispatch({ type: 'REM_BOOKMARK', data: {id: rec.id} });
     }
 
     render() {
@@ -46,13 +64,42 @@ class ListItem extends React.Component {
               </Typography>
           )
       }
+      if(rec.id in this.props.bookmarks) {
+          var bmicon =
+              <IconButton aria-label="bookmark" onClick={() => {this._handleRemBookClick(rec)}}>
+                <BookmarkIcon />
+              </IconButton>
+      } else {
+          var bmicon =
+              <IconButton aria-label="bookmark" onClick={() => {this._handleAddBookClick(rec)}}>
+                  <BookmarkBorderIcon />
+              </IconButton>
+      }
 
       return (
         <Card>
+            <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe">
+                    {rec.formats[0].charAt(0)}
+                  </Avatar>
+                }
+                action={
+                    <IconButton aria-label="bookmark" onClick={() => {this._handleAddBookClick(rec)}}>
+                        {bmicon}
+                    </IconButton>
+                }
+                title={
+                    <Link  variant="subtitle1" color="primary" onClick={() => {this._handleOpenClick(rec.id)}}>
+                        {rec.title.replace(/\/$/g,'')}
+                    </Link>
+                }
+                subheader={
+                    <span>{authors.join(', ')}</span>
+                }
+              />
             <CardContent>
-                <Link  variant="subtitle1" color="primary" onClick={() => {this._handleOpenClick(rec.id)}}>{rec.title.replace(/\/$/g,'')}</Link>
-                <Typography>{authors.join(', ')}</Typography>
-                {urls}
+                <Typography>{urls}</Typography>
             </CardContent>
         </Card>
       );
@@ -61,7 +108,8 @@ class ListItem extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        results: state.results
+        results: state.results,
+        bookmarks: state.bookmarks
     }
 }
 

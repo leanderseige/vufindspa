@@ -7,6 +7,7 @@ import StatusBar from './components/StatusBar.js';
 import ResultList from './components/ResultList.js';
 import FacetList from './components/FacetList.js';
 import TitleView from './components/TitleView.js';
+import BookmarksView from './components/BookmarksView.js';
 import LogoAndSearchService from './components/LogoAndSearchService.js'
 import { Provider } from 'react-redux';
 import store from './store';
@@ -32,6 +33,7 @@ function App() {
             </div>
             <div className="TitleView">
                 <TitleView />
+                <BookmarksView />
             </div>
         </div>
     </Provider>
