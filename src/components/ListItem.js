@@ -10,7 +10,8 @@ import Badge from '@material-ui/core/Badge';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
+import { Link as MLink } from '@material-ui/core';
+import { Link as RLink } from "react-router-dom";
 import store from '../store.js';
 
 class ListItem extends React.Component {
@@ -25,15 +26,6 @@ class ListItem extends React.Component {
     _handleOpenClick(id) {
         console.log(id)
         store.dispatch({ type: 'SET_ITEM_ID',data: { id: id } });
-        var url =   "https://vufind.org/advanced_demo/api/v1/record?id="+id+"&prettyPrint=false&lng=en"
-        console.log("querying "+url)
-        fetch(url)
-            .then(res => res.json())
-            .then((data) => {
-                console.log(data)
-                store.dispatch({type: 'SET_ITEM_DATA',data: { item_data: data }});
-            })
-            .catch(console.log)
     }
 
     _handleAddBookClick(rec) {
@@ -61,7 +53,7 @@ class ListItem extends React.Component {
       for(var key in rec.urls) {
           urls.push(
               <Typography color="secondary">
-              <Link color="secondary" href={rec.urls[key].url} target="_blank">{rec.urls[key].desc}</Link>
+              <MLink color="secondary" href={rec.urls[key].url} target="_blank">{rec.urls[key].desc}</MLink>
               </Typography>
           )
       }
@@ -77,6 +69,8 @@ class ListItem extends React.Component {
               </IconButton>
       }
 
+      var href='/record/'+rec.id
+
       return (
         <Card className="listitem">
             <CardHeader
@@ -87,9 +81,9 @@ class ListItem extends React.Component {
                 }
                 action={bmicon}
                 title={
-                    <Link  variant="subtitle1" color="primary" onClick={() => {this._handleOpenClick(rec.id)}}>
+                    <RLink to={href} variant="subtitle1" color="primary" onClick={() => {this._handleOpenClick(rec.id)}}>
                         {this.props.count}. {rec.title.replace(/\/$/g,'')}
-                    </Link>
+                    </RLink>
                 }
                 subheader={
                     <span>{authors.join(', ')}</span>

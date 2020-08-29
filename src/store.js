@@ -74,7 +74,10 @@ function reducer(state, action) {
         }
 
         case 'SET_ITEM_ID': {
-            return Object.assign({}, state, { item_id: action.data.id } );
+            return Object.assign({}, state, {
+                item_id: action.data.id,
+                item_data: false
+            } );
         }
 
         case 'SET_FLAGS': {

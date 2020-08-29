@@ -6,9 +6,10 @@ import SearchBar from './components/SearchBar.js';
 import StatusBar from './components/StatusBar.js';
 import ResultList from './components/ResultList.js';
 import FacetList from './components/FacetList.js';
-import TitleView from './components/TitleView.js';
+import RecordView from './components/RecordView.js';
 import BookmarksView from './components/BookmarksView.js';
 import LogoAndSearchService from './components/LogoAndSearchService.js'
+import { Redirect, Link, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -26,13 +27,15 @@ function App() {
                 <StatusBar />
             </div>
             <div className="ResultList" >
-                <ResultList />
+            <Switch>
+                <Route exact path="/" component={ResultList} />
+                <Route path="/record" component={RecordView} />
+            </Switch>
             </div>
             <div className="Facets">
                 <FacetList />
             </div>
             <div className="TitleView">
-                <TitleView />
                 <BookmarksView />
             </div>
         </div>

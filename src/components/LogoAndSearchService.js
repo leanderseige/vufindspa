@@ -51,6 +51,20 @@ class LogoAndSearchService extends React.Component {
                 .catch(console.log)
         }
 
+        if(this.props.item_id!==false && this.props.item_data===false) {
+            var url = "https://vufind.org/advanced_demo/api/v1/record?id=" +
+                this.props.item_id +
+                "&prettyPrint=false&lng=en"
+            console.log("querying "+url)
+            fetch(url)
+                .then(res => res.json())
+                .then((data) => {
+                    console.log(data)
+                    store.dispatch({type: 'SET_ITEM_DATA',data: { item_data: data }});
+                })
+                .catch(console.log)
+        }
+
         return (
             <span>
                 <img src={logo} className="logoimg" />
@@ -64,7 +78,9 @@ class LogoAndSearchService extends React.Component {
 function mapStateToProps(state) {
     return {
         search: state.search,
-        flags: state.flags
+        flags: state.flags,
+        item_id: state.item_id,
+        item_data: state.item_data
     }
 }
 

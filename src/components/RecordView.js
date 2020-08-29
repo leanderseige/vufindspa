@@ -4,33 +4,27 @@ import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
-
+import { Redirect, Link, Route, Switch } from "react-router-dom";
+import Loader from 'react-loader-spinner'
 import store from '../store.js';
 
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
-
-class TitleView extends React.Component {
+class RecordView extends React.Component {
 
     constructor(props) {
       super(props);
-      this.handleClose = this.handleClose.bind(this);
-    }
-
-    handleClose() {
-        console.log("close")
-        store.dispatch({type: 'SET_ITEM_DATA',data: { item_data: false }});
+      console.log("here is xyz")
+      console.log(this.props)
     }
 
     render() {
 
-        var open = false
         var output = []
-        if(this.props.item_data!=false) {
-            open = true
+        if(this.props.item_id===false) {
+            var id = this.props.location.pathname.split('/')[2]
+            console.log("ID: "+id)
+            store.dispatch({ type: 'SET_ITEM_ID',data: { id: id } });
+        }
+        if(this.props.item_data!==false) {
             output.push(<h1 className="TitleView">{this.props.item_data.records[0].title.replace(/\/$/g,'')}</h1>)
             output.push(<TextField
               id="outlined-multiline-static"
@@ -41,17 +35,19 @@ class TitleView extends React.Component {
               variant="outlined"
               className="TitleView"
             />)
+        } else {
+            output.push(
+                <Loader type="Oval" color="#ccc" height={100} width={100} className="allauto" />
+            )
         }
 
       return (
-        <Dialog onClose={() => {this.handleClose()}} aria-labelledby="simple-dialog-title" open={open} fullScreen TransitionComponent={Transition}>
             <div>
             {output}
-            <Button onClick={() => {this.handleClose()}} color="primary">
+            <Link to="/">
                 CLOSE
-            </Button>
+            </Link>
             </div>
-         </Dialog>
       );
 
     }
@@ -59,8 +55,9 @@ class TitleView extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        item_id: state.item_id,
         item_data: state.item_data
     }
 }
 
-export default connect(mapStateToProps)(TitleView)
+export default connect(mapStateToProps)(RecordView)
