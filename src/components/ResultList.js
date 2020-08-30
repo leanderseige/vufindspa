@@ -45,7 +45,9 @@ class ResultList extends React.Component {
           count++;
         }
         if(this.props.flags.appending) {
-            output.push(<Loader type="Grid" color="#ccc" height={100} width={100} className="allauto" />)
+            output.push(
+                <Loader type="Grid" color="#ccc" height={100} width={100} />
+            )
         }
         return (
             <div onScroll={this.handleScroll} className="scrollable">

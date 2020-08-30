@@ -8,6 +8,7 @@ import ResultList from './components/ResultList.js';
 import FacetList from './components/FacetList.js';
 import RecordView from './components/RecordView.js';
 import BookmarksView from './components/BookmarksView.js';
+import MobileFacets from './components/MobileFacets.js';
 import LogoAndSearchService from './components/LogoAndSearchService.js'
 import { Redirect, Link, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
@@ -37,6 +38,7 @@ function App() {
             </div>
             <div className="TitleView">
                 <BookmarksView />
+                <MobileFacets />
             </div>
         </div>
     </Provider>

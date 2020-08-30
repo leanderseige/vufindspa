@@ -42,7 +42,7 @@ class RecordView extends React.Component {
         }
 
       return (
-            <div>
+            <div className="scrollable">
             {output}
             <Link to="/">
                 CLOSE

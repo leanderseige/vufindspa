@@ -118,7 +118,8 @@ const initial_state = {
     flags: {
         loading: true,
         appending: false,
-        bookmarkdialog: false
+        bookmarkdialog: false,
+        mobilefacets: false
     },
     bookmarks: {}
 }
