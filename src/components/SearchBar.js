@@ -16,7 +16,8 @@ class SearchBar extends React.Component {
       this._handleSelectChange = this._handleSelectChange.bind(this);
       this._handleButtonClick = this._handleButtonClick.bind(this);
       this.state = {
-          selectValue: "AllFields"
+          selectValue: "AllFields",
+          textFieldValue: ""
       };
   }
 
