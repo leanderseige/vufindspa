@@ -33,6 +33,7 @@ Further info in [[CRA-README.md]]
 
 ## Third Party
 
-```
+Contains one image from Pixabay (License: https://pixabay.com/de/service/license/)
+
 Bild von <a href="https://pixabay.com/de/users/CharlesRondeau-1458430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1018808">Charles Rondeau</a> auf <a href="https://pixabay.com/de/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1018808">Pixabay</a>
-```
+
