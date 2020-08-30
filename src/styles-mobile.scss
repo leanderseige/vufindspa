@@ -1,82 +1,38 @@
 @media (max-aspect-ratio: 13/10) {
 
-    $mr1h: 55px;
-    $mr2h: 5vh;
-    $mr3h: 82vh;
-    $mc1w: 99vw;
-    $mpad1: 1vh;
-    $mpad2: 2vh;
-    $mpad3: 3vh;
+    $mr1h: 80px;
+    $mr2h: 64px;
+    $mc1w: 100vw;
 
     .App {
       grid-template-columns: $mc1w;
       grid-template-rows: $mr1h $mr2h 1fr;
-      width:99vw;
-      height:99vh;
-      margin:0;
-      padding:0;
-      display: grid;
-      z-index: 10;
     }
 
     .Logo {
         display: none;
     }
 
+    .logoimg {
+        display:none;
+    }
+
     .SearchBar {
         grid-column: 1;
         grid-row: 1;
-        padding:$mpad1;
-        border:0px solid red;
-        margin:0;
-        display: grid;
-        z-index: 20;
-    }
-
-    .StatusBar {
-        grid-column: 1;
-        grid-row: 2;
-        border:0px solid blue;
-        background-color: #ccc;
-        padding: $mpad1;
-        display: grid;
-        z-index: 20;
     }
 
     .ResultList {
         grid-column: 1;
         grid-row: 3;
-        border:0px solid green;
-        display: grid;
-        overflow: scroll;
-        z-index: 20;
     }
 
     .Facets {
-        grid-column: 1;
-        grid-row: 3;
         display: none;
-        padding: $mpad1 $mpad1 $mpad1 $mpad3;
-        overflow: scroll;
-        z-index: 20;
-    }
-
-    .TitleView {
-        width:90vw;
-        padding:$mpad3;
     }
 
     .stdui {
         width:30vw;
-    }
-
-    .logoimg {
-        display:none;
-    }
-
-    .allauto {
-        margin:auto;
-        padding-right:0;
     }
 
 }

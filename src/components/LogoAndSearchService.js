@@ -66,9 +66,7 @@ class LogoAndSearchService extends React.Component {
         }
 
         return (
-            <span>
-                <img src={logo} className="logoimg" />
-            </span>
+              <img src={logo} className="logoimg" />
         );
     }
 

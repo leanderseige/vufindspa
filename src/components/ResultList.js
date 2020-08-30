@@ -16,7 +16,7 @@ class ResultList extends React.Component {
 
     handleScroll = (e) => {
         console.log("...scroll...")
-        const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+        const bottom = Math.floor(e.target.scrollHeight - e.target.scrollTop - 1) <= e.target.clientHeight;
         if (bottom) {
           console.log("trigger endless scroll")
           if(this.props.flags.appending===false) {
@@ -48,7 +48,7 @@ class ResultList extends React.Component {
             output.push(<Loader type="Grid" color="#ccc" height={100} width={100} className="allauto" />)
         }
         return (
-            <div onScroll={this.handleScroll}>
+            <div onScroll={this.handleScroll} className="scrollable">
                 {output}
             </div>
         );

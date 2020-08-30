@@ -54,7 +54,7 @@ class SearchBar extends React.Component {
   render() {
 
     return (
-      <div>
+      <div class="allauto">
         <TextField
             InputProps={{className: "stdui"}}
             size="small" id="outlined-basic" label="Search" variant="outlined"

@@ -1,19 +1,18 @@
 $r1h: 80px;
 $r2h: 64px;
-// $r3h: 82vh;
 $c1w: 30vw;
 $c2w: 70vw;
-$pad1: 1vh;
-$pad2: 2vh;
-$pad3: 3vh;
+$pad1: 4px;
+$pad2: 8px;
+$pad3: 12px;
 
 .App {
   text-align: left;
   grid-template-columns: $c1w $c2w;
   grid-template-rows: $r1h $r2h 1fr;
-  width:99vw;
-  // height: calc(var(--vh, 1vh) * 100);
-  height:99vh;
+  width:100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  height:100vh;
   margin:0;
   padding:0;
   display: grid;
@@ -24,9 +23,15 @@ $pad3: 3vh;
     grid-column: 1;
     grid-row: 1;
     margin:0;
-    padding:$pad3;
     display: grid;
     z-index: 20;
+}
+
+.logoimg {
+    display: block;
+    max-height: 38px;
+    max-width: $c1w;
+    margin:auto;
 }
 
 .SearchBar {
@@ -34,7 +39,6 @@ $pad3: 3vh;
     grid-row: 1;
     border:0px solid red;
     margin:0;
-    padding:$pad3;
     display: grid;
     z-index: 20;
 }
@@ -59,10 +63,6 @@ $pad3: 3vh;
     z-index: 20;
 }
 
-.ResultList div {
-    overflow: scroll;
-}
-
 .Facets {
     grid-column: 1;
     grid-row: 3;
@@ -80,28 +80,12 @@ $pad3: 3vh;
     height: 38px;
 }
 
-.mainlogo {
-    padding-right: $pad2;
-}
-
-.logoimg {
-    padding-top: 0;
-    max-height: 38px;
-    max-width: $c1w;
-    display:inline-block;
-}
-
 .fullwidth {
     width: 100%;
 }
 
-a {
-    text-decoration: none;
-}
-
 .allauto {
     margin:auto;
-    padding-right:$c1w;
 }
 
 .listitem {
@@ -111,4 +95,8 @@ a {
 .morebutton {
     padding:$pad3;
     width: 100%;
+}
+
+.scrollable {
+    overflow: scroll;
 }
