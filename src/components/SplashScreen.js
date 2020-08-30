@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import SearchBar from './SearchBar.js';
+import logo from '../vufindspa.svg'
+
 
 class SplashScreen extends React.Component {
   constructor(props) {
