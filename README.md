@@ -1,8 +1,8 @@
 # VuFindSPA
 
-This is an experimental SPA and PWA for VuFind.
-
 [![Netlify Status](https://api.netlify.com/api/v1/badges/18fa70e8-e048-42db-96fb-80f1a103a073/deploy-status)](https://app.netlify.com/sites/vufindspa/deploys)
+
+This is an experimental SPA and PWA for VuFind.
 
 ## Quick Start
 
