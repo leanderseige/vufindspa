@@ -44,9 +44,9 @@ class BookmarksView extends React.Component {
 
       return (
         <Dialog onClose={() => {this.handleClose()}} aria-labelledby="simple-dialog-title" open={open} fullScreen TransitionComponent={Transition}>
-            <div>
-            {output}
-            <Button onClick={() => {this.handleClose()}} color="primary">
+            <div className="horizontalpadding">
+            {output}<br />
+            <Button onClick={() => {this.handleClose()}} size="small" variant="contained" color="primary">
                 CLOSE
             </Button>
             </div>

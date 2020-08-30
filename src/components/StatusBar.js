@@ -31,14 +31,14 @@ class StatusBar extends React.Component {
             <AppBar position="static">
                 <Toolbar>
                     Results: {this.props.results.resultCount}
-                    <div className="statusbaricon">
+                    <div className="horizontalpadding">
                     <IconButton color="inherit" onClick={() => {this._handleOpenBookmarksClick()}}>
                         <Badge badgeContent={Object.keys(this.props.bookmarks).length} color="secondary">
                             <BookmarkIcon color="white" />
                         </Badge>
                     </IconButton>
                     </div>
-                    <div className="mobileonly statusbaricon">
+                    <div className="mobileonly horizontalpadding">
                     <IconButton color="inherit" onClick={() => {this._handleOpenMobileFacetsClick()}} >
                       <ViewListIcon />
                     </IconButton>

@@ -42,6 +42,8 @@ class ListItem extends React.Component {
     render() {
       var idx = this.props.idx
       var rec = Object.assign({},this.props.results.records[idx])
+      console.log("REC")
+      console.log(rec)
       var authors = []
       for(var key in rec.authors.primary) {
           authors.push(key)

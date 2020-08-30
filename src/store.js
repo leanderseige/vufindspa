@@ -52,7 +52,7 @@ function reducer(state, action) {
 
         case 'SET_RESULTS': {
             var temp_results = Object.assign({}, action.data.results)
-            var temp_flags = Object.assign({}, state.flags, { loading: false, appending: false } );
+            var temp_flags = Object.assign({}, state.flags, { loading: false, appending: false, endofresults: false } );
             return Object.assign({}, state, { results: temp_results, flags: temp_flags } );
         }
 
@@ -119,7 +119,8 @@ const initial_state = {
         loading: true,
         appending: false,
         bookmarkdialog: false,
-        mobilefacets: false
+        mobilefacets: false,
+        endofresults: false
     },
     bookmarks: {}
 }

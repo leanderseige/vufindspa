@@ -42,10 +42,18 @@ class LogoAndSearchService extends React.Component {
                 .then(res => res.json())
                 .then((data) => {
                     console.log(data)
-                    if(this.props.flags.appending===true) {
-                        store.dispatch({type: 'APPEND_RESULTS',data: { results: data }})
-                    } else if(this.props.flags.loading===true) {
-                        store.dispatch({type: 'SET_RESULTS',data: { results: data }})
+                    if('records' in data) {
+                        if(this.props.flags.appending===true) {
+                            store.dispatch({type: 'APPEND_RESULTS',data: { results: data }})
+                        } else if(this.props.flags.loading===true) {
+                            store.dispatch({type: 'SET_RESULTS',data: { results: data }})
+                        }
+                    } else {
+                        store.dispatch({type: 'SET_FLAGS',data: {
+                            loading: false,
+                            appending: false,
+                            endofresults: true
+                        }})
                     }
                 })
                 .catch(console.log)
