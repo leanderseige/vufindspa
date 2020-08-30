@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { Link as RLink } from 'react-router-dom';
+
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -73,7 +75,13 @@ class SearchBar extends React.Component {
           <MenuItem value={"Title"}>Title</MenuItem>
           <MenuItem value={"Author"}>Author</MenuItem>
         </Select>
-        <Button className="stdui" size="small" variant="contained" color="primary" onClick={this._handleButtonClick}>Find</Button>
+        <Button
+            component={ RLink }
+            className="stdui" to="/find" size="small" variant="contained" color="primary"
+            onClick={this._handleButtonClick}
+        >
+            Find
+        </Button>
       </div>
     );
   }

@@ -44,7 +44,7 @@ class RecordView extends React.Component {
       return (
             <div className="scrollable">
             {output}
-            <Link to="/" variant="contained" color="primary">
+            <Link to="/find" variant="contained" color="primary">
                 CLOSE
             </Link>
             </div>

@@ -30,3 +30,9 @@ Further info in [[CRA-README.md]]
 ## Known Bugs
 
 * Android's Keyboard may ruin layout, use iOS or just fix the responsiveness
+
+## Third Party
+
+```
+Bild von <a href="https://pixabay.com/de/users/CharlesRondeau-1458430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1018808">Charles Rondeau</a> auf <a href="https://pixabay.com/de/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1018808">Pixabay</a>
+```

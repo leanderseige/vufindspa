@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import store from '../store.js';
 import logo from '../vufindspa.svg'
+import { Link as RLink } from 'react-router-dom';
 
 class LogoAndSearchService extends React.Component {
 
@@ -74,7 +75,9 @@ class LogoAndSearchService extends React.Component {
         }
 
         return (
+            <RLink to="/" className="logoimg">
               <img src={logo} className="logoimg" />
+            </RLink>
         );
     }
 

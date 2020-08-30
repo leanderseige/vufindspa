@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import './styles.scss';
 import './styles-mobile.scss';
+import SplashScreen from './components/SplashScreen.js';
 import SearchBar from './components/SearchBar.js';
 import StatusBar from './components/StatusBar.js';
 import ResultList from './components/ResultList.js';
@@ -17,30 +18,35 @@ import store from './store';
 function App() {
   return (
     <Provider store={store}>
-        <div className="App">
-            <div className="Logo">
-                <LogoAndSearchService />
-            </div>
-            <div className="SearchBar" >
-                <SearchBar />
-            </div>
-            <div className="StatusBar" >
-                <StatusBar />
-            </div>
-            <div className="ResultList" >
-            <Switch>
-                <Route exact path="/" component={ResultList} />
-                <Route path="/record" component={RecordView} />
-            </Switch>
-            </div>
-            <div className="Facets">
-                <FacetList />
-            </div>
-            <div className="TitleView">
-                <BookmarksView />
-                <MobileFacets />
-            </div>
-        </div>
+        <Switch>
+            <Route exact path="/" component={SplashScreen} />
+            <Route path="/">
+                <div className="App">
+                    <div className="Logo">
+                        <LogoAndSearchService />
+                    </div>
+                    <div className="SearchBar" >
+                        <SearchBar />
+                    </div>
+                    <div className="StatusBar" >
+                        <StatusBar />
+                    </div>
+                    <div className="ResultList" >
+                    <Switch>
+                        <Route exact path="/find" component={ResultList} />
+                        <Route path="/record" component={RecordView} />
+                    </Switch>
+                    </div>
+                    <div className="Facets">
+                        <FacetList />
+                    </div>
+                    <div className="TitleView">
+                        <BookmarksView />
+                        <MobileFacets />
+                    </div>
+                </div>
+            </Route>
+        </Switch>
     </Provider>
   );
 }
