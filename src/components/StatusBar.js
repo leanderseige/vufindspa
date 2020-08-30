@@ -40,7 +40,9 @@ class StatusBar extends React.Component {
                     </div>
                     <div className="mobileonly horizontalpadding">
                     <IconButton color="inherit" onClick={() => {this._handleOpenMobileFacetsClick()}} >
-                      <ViewListIcon />
+                      <Badge badgeContent={Object.keys(this.props.search.filter).length} color="secondary">
+                        <ViewListIcon />
+                      </Badge>
                     </IconButton>
                     </div>
                 </Toolbar>
@@ -54,6 +56,7 @@ class StatusBar extends React.Component {
 function mapStateToProps(state) {
     return {
         results: state.results,
+        search: state.search,
         bookmarks: state.bookmarks
     }
 }
