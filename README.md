@@ -4,6 +4,8 @@
 
 This is an experimental SPA and PWA for VuFind.
 
+https://vufindspa.netlify.app
+
 ## Quick Start
 
 ### `git clone https://github.com/leanderseige/vufindspa`
