@@ -12,7 +12,7 @@ $pad3: 12px;
   grid-template-rows: $r1h $r2h 1fr;
   width:100vw;
   height: calc(var(--vh, 1vh) * 100);
-  height:100vh;
+  // height:100vh;
   margin:0;
   padding:0;
   display: grid;
@@ -27,10 +27,10 @@ $pad3: 12px;
     top:0;
     left:0;
     // background-color: white;
-    z-index: 0;
+    z-index: 100;
     // background-image:url('water.jpg');
-    background-size: cover;
-    background-position: center;
+    // background-size: cover;
+    // background-position: center;
 }
 
 .Logo {
@@ -62,7 +62,7 @@ $pad3: 12px;
     grid-row: 2;
     border:0px solid blue;
     background-color: #eee;
-    // padding-left: $pad3;
+    width:100vw;
     display: grid;
     z-index: 20;
 }
@@ -86,8 +86,8 @@ $pad3: 12px;
     z-index: 20;
 }
 
-.TitleView {
-    width:90vw;
+.TitleView { /* FIXME */
+  width:100vw;
 }
 
 .stdui {
