@@ -27,7 +27,7 @@ class LogoAndSearchService extends React.Component {
                 page = page + 1
             }
 
-            var url =   "https://vufind.org/advanced_demo/api/v1/search" +
+            var url =   this.props.search.base +
                         "?lookfor=" + this.props.search.lookfor +
                         facets +
                         this.props.search.filter.join('') +

@@ -104,6 +104,7 @@ function reducer(state, action) {
 
 const initial_state = {
     search: {
+        base: 'https://vufind.org/advanced_demo/api/v1/search',
         lookfor: 'Shakespeare',
         type: 'AllFields',
         sort: 'relevance',
