@@ -17,6 +17,11 @@ class LogoAndSearchService extends React.Component {
         var facets=''
         this.props.search.facets.forEach(f => facets+="&facet%5B%5D="+f);
 
+        var field = ""
+        this.props.search.field.forEach(function(f) {
+          field += "&field%5B%5D="+f
+        })
+
         if ( this.props.flags.loading===true || this.props.flags.appending===true ) {
 
             console.log("FETCHER")
@@ -27,9 +32,10 @@ class LogoAndSearchService extends React.Component {
                 page = page + 1
             }
 
-            var url =   this.props.search.base +
+            var url =   this.props.search.base + "search" +
                         "?lookfor=" + this.props.search.lookfor +
                         facets +
+                        field +
                         this.props.search.filter.join('') +
                         "&type=" + this.props.search.type +
                         "&sort=" + this.props.search.sort +
@@ -61,8 +67,9 @@ class LogoAndSearchService extends React.Component {
         }
 
         if(this.props.item_id!==false && this.props.item_data===false) {
-            var url = "https://vufind.org/advanced_demo/api/v1/record?id=" +
-                this.props.item_id +
+            var url = this.props.search.base +
+                "record?id=" +
+                this.props.item_id + field +
                 "&prettyPrint=false&lng=en"
             console.log("querying "+url)
             fetch(url)

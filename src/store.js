@@ -102,16 +102,19 @@ function reducer(state, action) {
     }
 }
 
+// https://vufind.org/advanced_demo/api/v1/
+
 const initial_state = {
     search: {
-        base: 'https://vufind.org/advanced_demo/api/v1/search',
+        base: 'https://vufind.org/advanced_demo/api/v1/',
         lookfor: 'Shakespeare',
         type: 'AllFields',
         sort: 'relevance',
         page: 1,
         limit: 20,
         filter: [],
-        facets: ['author_facet','genre_facet','topic_facet','publishDate']
+        facets: ['author_facet','genre_facet','topic_facet','publishDate'],
+        field: ['id','authors','formats','series','subjects','title','urls','languages','fullRecord']
     },
     results: {},
     item_id: false,

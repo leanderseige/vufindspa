@@ -8,6 +8,10 @@ import { Redirect, Link, Route, Switch } from "react-router-dom";
 import Loader from 'react-loader-spinner'
 import store from '../store.js';
 
+import XMLParser from 'react-xml-parser';
+import { mrkToObject } from 'himarc';
+
+
 class RecordView extends React.Component {
 
     constructor(props) {
@@ -19,13 +23,32 @@ class RecordView extends React.Component {
     render() {
 
         var output = []
+
         if(this.props.item_id===false) {
             var id = this.props.location.pathname.split('/')[2]
             console.log("ID: "+id)
             store.dispatch({ type: 'SET_ITEM_ID',data: { id: id } });
         }
+
         if(this.props.item_data!==false) {
+
             output.push(<h1 className="TitleView">{this.props.item_data.records[0].title.replace(/\/$/g,'')}</h1>)
+
+            try {
+              let domparser = new DOMParser()
+              var xmlstring = this.props.item_data.records[0].fullRecord.replace(/xmlns=\"[^\"]+\"/g,'') // Sorry! FIXME
+              let xml = domparser.parseFromString(xmlstring,'application/xml')
+              var path ='//controlfield[@tag="001"]/text()'
+              var nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null);
+              var result = nodes.iterateNext();
+              output.push(<h4>MARC21 Field 001: {result.textContent}</h4>)
+            } catch(err) {
+              console.log("error")
+              console.log(err)
+              output.push(<h4>Error parsing fullRecord as MARC21</h4>)
+              // TODO: try himarc?
+            }
+
             output.push(<TextField
               id="outlined-multiline-static"
               label="Data"
@@ -35,7 +58,8 @@ class RecordView extends React.Component {
               variant="outlined"
               className="TitleView"
             />)
-        } else {
+
+          } else {
             output.push(
                 <Loader type="Oval" color="#ccc" height={100} width={100} className="allauto" />
             )
