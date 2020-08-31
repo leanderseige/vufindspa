@@ -7,9 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import { Redirect, Link, Route, Switch } from "react-router-dom";
 import Loader from 'react-loader-spinner'
 import store from '../store.js';
-
-import XMLParser from 'react-xml-parser';
-import { mrkToObject } from 'himarc';
+// import { mrkToObject } from 'himarc';
 
 
 class RecordView extends React.Component {
