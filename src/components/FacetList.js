@@ -79,7 +79,7 @@ class FacetList extends React.Component {
         }
 
         try {
-          // if(this.flags.loading===false) {
+          if(Object.keys(this.props.results.facets.publishDate).length>1) {
             var fpd = JSON.parse(JSON.stringify(this.props.results.facets.publishDate))
             fpd = fpd.sort(this.compare)
             output.push(
@@ -91,7 +91,7 @@ class FacetList extends React.Component {
               </BarChart>
               </ResponsiveContainer>
             )
-          // }
+          }
         } catch(e) {}
 
         return (
