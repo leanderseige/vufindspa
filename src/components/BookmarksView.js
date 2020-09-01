@@ -39,7 +39,7 @@ class BookmarksView extends React.Component {
         }
 
       return (
-        <Dialog onClose={() => {this.handleClose()}} aria-labelledby="simple-dialog-title" open={open} fullScreen TransitionComponent={Transition}>
+        <Dialog onClose={() => {this.handleClose()}} aria-labelledby="simple-dialog-title" open={open} fullScreen TransitionComponent={Transition} className="greybackground">
             <Button onClick={() => {this.handleClose()}} size="small" variant="contained" color="primary">
                 CLOSE
             </Button>

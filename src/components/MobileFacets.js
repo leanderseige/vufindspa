@@ -29,13 +29,14 @@ class MobileFacets extends React.Component {
 
       return (
         <Dialog
+          className="greybackground"
           onClose={() => {this.handleClose()}}
           aria-labelledby="simple-dialog-title"
           open={this.props.flags.mobilefacets} fullScreen TransitionComponent={Transition}>
-          <FacetList /><br />
           <Button onClick={() => {this.handleClose()}} size="small" variant="contained" color="primary">
               CLOSE
           </Button>
+          <FacetList /><br />
         </Dialog>
       );
 
