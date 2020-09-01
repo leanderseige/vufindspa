@@ -10,6 +10,10 @@ import Badge from '@material-ui/core/Badge';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import IconButton from '@material-ui/core/IconButton';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button';
 import { Link as MLink } from '@material-ui/core';
 import { Link as RLink } from "react-router-dom";
 import store from '../store.js';
@@ -21,6 +25,11 @@ class ListItem extends React.Component {
       this._handleOpenClick = this._handleOpenClick.bind(this);
       this._handleAddBookClick = this._handleAddBookClick.bind(this);
       this._handleRemBookClick = this._handleRemBookClick.bind(this);
+      this._handleRemBookClickY = this._handleRemBookClickY.bind(this);
+      this._handleRemBookClickN = this._handleRemBookClickN.bind(this);
+      this.state = {
+        openRemDialog: false,
+      }
     }
 
     _handleOpenClick(id) {
@@ -36,8 +45,17 @@ class ListItem extends React.Component {
         store.dispatch({ type: 'ADD_BOOKMARK', data: data });
     }
 
+    _handleRemBookClickY(rec) {
+      this.setState({openRemDialog:false})
+      store.dispatch({ type: 'REM_BOOKMARK', data: {id: rec.id} });
+    }
+
+    _handleRemBookClickN(rec) {
+      this.setState({openRemDialog:false})
+    }
+
     _handleRemBookClick(rec) {
-        store.dispatch({ type: 'REM_BOOKMARK', data: {id: rec.id} });
+        this.setState({openRemDialog:true})
     }
 
     render() {
@@ -96,6 +114,22 @@ class ListItem extends React.Component {
             <CardContent>
                 <Typography>{urls}</Typography>
             </CardContent>
+            <Dialog
+              open={this.state.openRemDialog}
+              onClose={() => {this._handleRemBookClickN(rec)}}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">{"Delete this Bookmark?"}</DialogTitle>
+              <DialogActions>
+                <Button onClick={() => {this._handleRemBookClickY(rec)}} color="primary">
+                  Yes
+                </Button>
+                <Button onClick={() => {this._handleRemBookClickN(rec)}} color="primary" autoFocus>
+                  No
+                </Button>
+              </DialogActions>
+            </Dialog>
         </Card>
       );
     }
