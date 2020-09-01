@@ -4,14 +4,14 @@ import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
-
+import ReactJson from 'react-json-view'
+import { Link as RLink } from 'react-router-dom';
 import store from '../store.js';
-
+import ListItem from './ListItem.js';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-
 
 class BookmarksView extends React.Component {
 
@@ -26,30 +26,25 @@ class BookmarksView extends React.Component {
     }
 
     render() {
-
         var open = this.props.flags.bookmarkdialog
         var output = []
-        if(this.props.item_data!=false) {
-            output.push(<h1 className="TitleView">Bookmarks</h1>)
-            output.push(<TextField
-              id="outlined-multiline-static"
-              label="Data"
-              multiline
-              rows={20}
-              defaultValue={JSON.stringify(this.props.bookmarks, null, 2)}
-              variant="outlined"
-              className="TitleView"
-            />)
+
+        // output.push(<ReactJson src={this.props.bookmarks} enableClipboard={false} />)
+        var count = 1
+        for(var key in this.props.bookmarks) {
+          output.push(
+            <ListItem idx={key} rec={this.props.bookmarks[key]} count={count} />
+          )
+          count++
         }
 
       return (
         <Dialog onClose={() => {this.handleClose()}} aria-labelledby="simple-dialog-title" open={open} fullScreen TransitionComponent={Transition}>
-            <div className="horizontalpadding">
-            {output}<br />
             <Button onClick={() => {this.handleClose()}} size="small" variant="contained" color="primary">
                 CLOSE
             </Button>
-            </div>
+            <h1 className="TitleView">Bookmarks</h1>
+            {output}
          </Dialog>
       );
 

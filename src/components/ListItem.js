@@ -25,6 +25,7 @@ class ListItem extends React.Component {
 
     _handleOpenClick(id) {
         console.log(id)
+        store.dispatch({type: 'SET_FLAGS',data: { bookmarkdialog: false }});
         store.dispatch({ type: 'SET_ITEM_ID',data: { id: id } });
     }
 
@@ -40,8 +41,9 @@ class ListItem extends React.Component {
     }
 
     render() {
-      var idx = this.props.idx
-      var rec = Object.assign({},this.props.results.records[idx])
+      // var idx = this.props.idx
+      // var rec = Object.assign({},this.props.results.records[idx])
+      var rec = this.props.rec
       console.log("REC")
       console.log(rec)
       var authors = []

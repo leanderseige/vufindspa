@@ -4,10 +4,28 @@ import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
-import { Redirect, Link, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Loader from 'react-loader-spinner'
 import store from '../store.js';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import ReactJson from 'react-json-view'
+import { Link as RLink } from 'react-router-dom';
+
 // import { mrkToObject } from 'himarc';
+
+
+const styles = theme => ({
+  root: {
+    padding: `${theme.spacing.unit * 6}px ${theme.spacing.unit * 3}px 0`,
+  },
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing.unit / 2,
+    top: theme.spacing.unit / 2,
+    color: theme.palette.grey[500],
+  },
+})
 
 
 class RecordView extends React.Component {
@@ -47,28 +65,18 @@ class RecordView extends React.Component {
               // TODO: try himarc?
             }
 
-            output.push(<TextField
-              id="outlined-multiline-static"
-              label="Data"
-              multiline
-              rows={20}
-              defaultValue={JSON.stringify(this.props.item_data.records[0], null, 2)}
-              variant="outlined"
-              className="TitleView"
-            />)
+            output.push(<ReactJson src={this.props.item_data} enableClipboard={false} />)
 
           } else {
-            output.push(
+            return (
                 <Loader type="Oval" color="#ccc" height={100} width={100} className="allauto" />
             )
         }
 
       return (
             <div className="scrollable">
-            {output}
-            <Link to="/find" variant="contained" color="primary">
-                CLOSE
-            </Link>
+              <Button component={RLink} to="/find" size="small" variant="contained" color="primary">Close</Button>
+              {output}
             </div>
       );
 

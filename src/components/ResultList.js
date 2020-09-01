@@ -42,7 +42,7 @@ class ResultList extends React.Component {
         for (var key in this.props.results.records) {
           if(Object.keys(this.props.results.records[key]).length>0) {
               output.push(
-                <ListItem idx={key} count={count} />
+                <ListItem idx={key} rec={this.props.results.records[key]} count={count} />
               );
               count++;
           }
