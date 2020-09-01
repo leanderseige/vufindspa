@@ -4,6 +4,9 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Loader from 'react-loader-spinner'
 import Facet from './Facet.js';
+import {
+  BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
+} from 'recharts';
 import store from '../store.js';
 
 class FacetList extends React.Component {
@@ -12,6 +15,7 @@ class FacetList extends React.Component {
         super(props);
         this.handleClear = this.handleClear.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
+        this.handleBarClick = this.handleBarClick.bind(this);
     }
 
     handleClear() {
@@ -24,6 +28,25 @@ class FacetList extends React.Component {
         store.dispatch({type: 'REM_SEARCH_FILTER',data: { filter: filter}});
     }
 
+
+    handleBarClick(e) {
+      console.log(e)
+      store.dispatch({ type: 'SET_FLAGS', data: { loading: true }})
+      store.dispatch({type: 'ADD_SEARCH_FILTER',data: { filter: ["&filter%5B%5D=publishDate%3A%22"+e.activeLabel+"%22"] }});
+    }
+
+    compare(a, b) {
+      const aa = a.value;
+      const bb = b.value;
+
+      let comparison = 0;
+      if (aa > bb) {
+        comparison = 1;
+      } else if (aa < bb) {
+        comparison = -1;
+      }
+      return comparison;
+    }
 
     render() {
 
@@ -54,6 +77,22 @@ class FacetList extends React.Component {
                 <Facet data={this.props.results.facets[key]} name={key} />
             );
         }
+
+        try {
+          // if(this.flags.loading===false) {
+            var fpd = JSON.parse(JSON.stringify(this.props.results.facets.publishDate))
+            fpd = fpd.sort(this.compare)
+            output.push(
+              <ResponsiveContainer width="95%" height={200}>
+              <BarChart data={fpd} onClick={this.handleBarClick}>>
+                <XAxis dataKey="translated" />
+                <Tooltip />
+                <Bar dataKey="count" fill="#8884d8" />
+              </BarChart>
+              </ResponsiveContainer>
+            )
+          // }
+        } catch(e) {}
 
         return (
           <div>
