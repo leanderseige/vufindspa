@@ -30,7 +30,8 @@ class Facet extends React.Component {
             author_facet: 'Author',
             genre_facet: 'Genre',
             topic_facet: 'Topic',
-            publishDate: 'Year'
+            publishDate: 'Year',
+            format: 'Format'
         }
 
         var output = [];

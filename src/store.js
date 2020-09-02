@@ -111,14 +111,14 @@ function reducer(state, action) {
 
 const initial_state = {
     search: {
-        base: 'https://api.finna.fi/api/v1/',
+        base: 'https://vufind.org/advanced_demo/api/v1/',
         lookfor: 'Shakespeare',
         type: 'AllFields',
         sort: 'relevance',
         page: 1,
         limit: 20,
         filter: [],
-        facets: ['author_facet','genre_facet','topic_facet','publishDate'],
+        facets: ['author_facet','genre_facet','topic_facet','publishDate','format'],
         field: ['id','authors','formats','series','subjects','title','urls','languages','fullRecord','publishDate']
     },
     results: {},
