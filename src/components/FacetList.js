@@ -19,19 +19,16 @@ class FacetList extends React.Component {
     }
 
     handleClear() {
-        store.dispatch({ type: 'SET_FLAGS', data: { loading: true }})
         store.dispatch({type: 'CLR_SEARCH_FILTER'});
     }
 
     handleRemove(filter)  {
-        store.dispatch({ type: 'SET_FLAGS', data: { loading: true }})
         store.dispatch({type: 'REM_SEARCH_FILTER',data: { filter: filter}});
     }
 
 
     handleBarClick(e) {
       console.log(e)
-      store.dispatch({ type: 'SET_FLAGS', data: { loading: true }})
       store.dispatch({type: 'ADD_SEARCH_FILTER',data: { filter: ["&filter%5B%5D=publishDate%3A%22"+e.activeLabel+"%22"] }});
     }
 
@@ -49,7 +46,9 @@ class FacetList extends React.Component {
     }
 
     render() {
-
+      if(this.props.flags.loading) {
+          return(<Loader type="Oval" color="#ccc" height={100} width={100} className="allauto" />)
+      }
         var output = [];
 
         if(this.props.search.filter.length>0) {

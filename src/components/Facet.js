@@ -21,7 +21,6 @@ class Facet extends React.Component {
     _handleClick(query) {
         var filter = query.match(/&filter[^&]+/gi)
         console.log(filter)
-        store.dispatch({ type: 'SET_FLAGS', data: { loading: true }})
         store.dispatch({type: 'ADD_SEARCH_FILTER',data: { filter: filter }});
     }
 

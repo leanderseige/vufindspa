@@ -10,7 +10,8 @@ function reducer(state, action) {
             temp_search.type = action.data.type
             temp_search.page = 1
             temp_search.filter = []
-            return Object.assign({}, state, { search: temp_search } );
+            var temp_flags = Object.assign({}, state.flags, { loading: true, appending: false, endofresults: false } );
+            return Object.assign({}, state, { search: temp_search, flags: temp_flags } );
         }
 
         case 'SET_SEARCH_PAGE': {
@@ -29,13 +30,15 @@ function reducer(state, action) {
             var temp_search = Object.assign({}, state.search)
             temp_search.filter = [...action.data.filter, ...temp_search.filter]
             temp_search.page = 1
-            return Object.assign({}, state, { search: temp_search } );
+            var temp_flags = Object.assign({}, state.flags, { loading: true, appending: false, endofresults: false } );
+            return Object.assign({}, state, { search: temp_search, flags: temp_flags } );
         }
 
         case 'CLR_SEARCH_FILTER': {
             var temp_search = Object.assign({}, state.search)
             temp_search.filter = []
-            return Object.assign({}, state, { search: temp_search } );
+            var temp_flags = Object.assign({}, state.flags, { loading: true, appending: false, endofresults: false } );
+            return Object.assign({}, state, { search: temp_search, flags: temp_flags } );
         }
 
         case 'REM_SEARCH_FILTER': {
@@ -47,7 +50,8 @@ function reducer(state, action) {
                 }
             })
             temp_search.filter = new_filter
-            return Object.assign({}, state, { search: temp_search } );
+            var temp_flags = Object.assign({}, state.flags, { loading: true, appending: false, endofresults: false } );
+            return Object.assign({}, state, { search: temp_search, flags: temp_flags } );
         }
 
         case 'SET_RESULTS': {
@@ -114,7 +118,7 @@ const initial_state = {
         limit: 20,
         filter: [],
         facets: ['author_facet','genre_facet','topic_facet','publishDate'],
-        field: ['id','authors','formats','series','subjects','title','urls','languages','fullRecord']
+        field: ['id','authors','formats','series','subjects','title','urls','languages','fullRecord','publishDate']
     },
     results: {},
     item_id: false,

@@ -41,7 +41,6 @@ class SearchBar extends React.Component {
 
   _handleButtonClick(e) {
       console.log(this.state.textFieldValue);
-      store.dispatch({ type: 'SET_FLAGS', data: { loading: true }})
       store.dispatch({
           type: 'SET_SEARCH_LOOKFOR',
           data: {
