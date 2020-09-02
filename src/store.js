@@ -17,7 +17,15 @@ function reducer(state, action) {
         case 'SET_SEARCH_PAGE': {
             var temp_search = Object.assign({}, state.search)
             temp_search.page = action.data.page
-            return Object.assign({}, state, { search: temp_search } );
+            var temp_flags = Object.assign({}, state.flags, { loading: true, appending: false, endofresults: false } );
+            return Object.assign({}, state, { search: temp_search, flags: temp_flags } );
+        }
+
+        case 'SET_SEARCH_BASE': {
+            var temp_search = Object.assign({}, state.search)
+            temp_search.base = action.data.base
+            var temp_flags = Object.assign({}, state.flags, { loading: true, appending: false, endofresults: false } );
+            return Object.assign({}, state, { search: temp_search, flags: temp_flags } );
         }
 
         case 'INC_SEARCH_LIMIT': {
@@ -108,10 +116,13 @@ function reducer(state, action) {
 
 // https://vufind.org/advanced_demo/api/v1/
 // https://api.finna.fi/api/v1/
+// https://bibliotecas.uncuyo.edu.ar/explorador3/api/v1/
+// https://repositoriosdigitales.mincyt.gob.ar/vufind/api/v1/
+// https://hestia.jmrl.org/findit/api/v1/
 
 const initial_state = {
     search: {
-        base: 'https://vufind.org/advanced_demo/api/v1/',
+        base: 'https://hestia.jmrl.org/findit/api/v1/',
         lookfor: 'Shakespeare',
         type: 'AllFields',
         sort: 'relevance',
@@ -129,9 +140,16 @@ const initial_state = {
         appending: false,
         bookmarkdialog: false,
         mobilefacets: false,
-        endofresults: false
+        endofresults: false,
+        settingsdialog: false
     },
-    bookmarks: {}
+    bookmarks: {},
+    servers: {
+      vufind:'https://vufind.org/advanced_demo/api/v1/',
+      finna:'https://api.finna.fi/api/v1/',
+      mincyt:'https://repositoriosdigitales.mincyt.gob.ar/vufind/api/v1/',
+      jmrl:'https://hestia.jmrl.org/findit/api/v1/'
+    }
 }
 
 const enhancers = compose(

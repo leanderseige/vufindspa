@@ -9,6 +9,7 @@ import ResultList from './components/ResultList.js';
 import FacetList from './components/FacetList.js';
 import RecordView from './components/RecordView.js';
 import BookmarksView from './components/BookmarksView.js';
+import SettingsDialog from './components/SettingsDialog.js';
 import MobileFacets from './components/MobileFacets.js';
 import LoaderOverlay from './components/LoaderOverlay.js';
 import LogoAndSearchService from './components/LogoAndSearchService.js'
@@ -45,6 +46,7 @@ function App() {
                         <BookmarksView />
                         <MobileFacets />
                         <LoaderOverlay />
+                        <SettingsDialog />
                     </div>
                 </div>
             </Route>

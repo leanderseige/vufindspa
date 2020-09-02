@@ -12,7 +12,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import ReactJson from 'react-json-view'
 import { Link as RLink } from 'react-router-dom';
 
-// import { mrkToObject } from 'himarc';
+import { mrkToObject } from 'himarc';
 
 
 const styles = theme => ({
@@ -50,6 +50,7 @@ class RecordView extends React.Component {
 
             output.push(<h1 className="TitleView">{this.props.item_data.records[0].title.replace(/\/$/g,'')}</h1>)
 
+            var marc001 = "error"
             try {
               let domparser = new DOMParser()
               var xmlstring = this.props.item_data.records[0].fullRecord.replace(/xmlns=\"[^\"]+\"/g,'') // Sorry! FIXME
@@ -57,13 +58,22 @@ class RecordView extends React.Component {
               var path ='//controlfield[@tag="001"]/text()'
               var nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null);
               var result = nodes.iterateNext();
-              output.push(<h4>MARC21 Field 001: {result.textContent}</h4>)
+              marc001 = result.textContent
+              // output.push(<h4>MARC21 Field 001: {result.textContent}</h4>)
             } catch(err) {
               console.log("error")
               console.log(err)
-              output.push(<h4>Error parsing fullRecord as MARC21</h4>)
-              // TODO: try himarc?
             }
+
+            try {
+                console.log(mrkToObject(this.props.item_data.records[0].fullRecord));
+            } catch(err) {
+                console.log("himarc error")
+            }
+
+            output.push(<h4>MARC21 Field 001: {marc001}</h4>)
+
+
 
             output.push(<ReactJson src={this.props.item_data} enableClipboard={false} />)
 

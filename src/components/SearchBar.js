@@ -6,7 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link as RLink } from 'react-router-dom';
-
+import SettingsIcon from '@material-ui/icons/Settings';
+import IconButton from '@material-ui/core/IconButton';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -15,10 +16,15 @@ class SearchBar extends React.Component {
       this._handleTextFieldChange = this._handleTextFieldChange.bind(this);
       this._handleSelectChange = this._handleSelectChange.bind(this);
       this._handleButtonClick = this._handleButtonClick.bind(this);
+      this._handleSettingsClick = this._handleSettingsClick.bind(this);
       this.state = {
           selectValue: "AllFields",
           textFieldValue: this.props.search.lookfor
       };
+  }
+
+  _handleSettingsClick(e) {
+    store.dispatch({type: 'SET_FLAGS',data: { settingsdialog: true }});
   }
 
   handleSubmit(event) {
@@ -82,6 +88,9 @@ class SearchBar extends React.Component {
         >
             Find
         </Button>
+        <IconButton className="stdui" onClick={this._handleSettingsClick}>
+          <SettingsIcon />
+        </IconButton>
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Box from '@material-ui/core/Box';
 import Loader from 'react-loader-spinner'
 import Facet from './Facet.js';
 import {
@@ -94,6 +95,7 @@ class FacetList extends React.Component {
         return (
           <div>
             {output}
+            <Box color="text.info" className="bottomline">{this.props.search.base}</Box>
           </div>
         );
     }
