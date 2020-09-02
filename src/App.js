@@ -46,11 +46,11 @@ function App() {
                         <BookmarksView />
                         <MobileFacets />
                         <LoaderOverlay />
-                        <SettingsDialog />
                     </div>
                 </div>
             </Route>
         </Switch>
+        <SettingsDialog />
     </Provider>
   );
 }

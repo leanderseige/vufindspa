@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Box from '@material-ui/core/Box';
 import SearchBar from './SearchBar.js';
 import logo from '../vufindspa.svg'
 
@@ -18,6 +19,7 @@ class SplashScreen extends React.Component {
     return (
       <div class="SplashScreen">
             <SearchBar />
+            <Box color="text.info" className="bottomline">{this.props.search.base}</Box>
       </div>
     );
   }
