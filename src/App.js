@@ -10,6 +10,7 @@ import FacetList from './components/FacetList.js';
 import RecordView from './components/RecordView.js';
 import BookmarksView from './components/BookmarksView.js';
 import MobileFacets from './components/MobileFacets.js';
+import LoaderOverlay from './components/LoaderOverlay.js';
 import LogoAndSearchService from './components/LogoAndSearchService.js'
 import { Redirect, Link, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
@@ -43,6 +44,7 @@ function App() {
                     <div className="TitleView">
                         <BookmarksView />
                         <MobileFacets />
+                        <LoaderOverlay />
                     </div>
                 </div>
             </Route>

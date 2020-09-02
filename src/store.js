@@ -107,10 +107,11 @@ function reducer(state, action) {
 }
 
 // https://vufind.org/advanced_demo/api/v1/
+// https://api.finna.fi/api/v1/
 
 const initial_state = {
     search: {
-        base: 'https://vufind.org/advanced_demo/api/v1/',
+        base: 'https://api.finna.fi/api/v1/',
         lookfor: 'Shakespeare',
         type: 'AllFields',
         sort: 'relevance',

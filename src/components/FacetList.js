@@ -47,9 +47,6 @@ class FacetList extends React.Component {
 
     render() {
 
-        if(this.props.flags.loading) {
-            return(<Loader type="Oval" color="#ccc" height={100} width={100} className="allauto" />)
-        }
         var output = [];
 
         if(this.props.search.filter.length>0) {

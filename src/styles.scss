@@ -133,3 +133,14 @@ $pad3: 12px;
 .greybackground {
   background-color: #eee;
 }
+
+.overlay {
+  width:100vw;
+  height:100vh;
+  top:0;
+  left:0;
+  position: fixed;
+  display: flex;
+  z-index:10000;
+  background-color: #eee8;
+}

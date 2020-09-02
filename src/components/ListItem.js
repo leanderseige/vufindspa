@@ -93,12 +93,22 @@ class ListItem extends React.Component {
 
       var href='/record/'+rec.id
 
+      try {
+        if(typeof rec.formats[0] === 'object') {
+          var avatarchar = rec.formats[0].translated.charAt(0)
+        } else {
+          var avatarchar = rec.formats[0].charAt(0)
+        }
+      } catch(e) {
+        var avatarchar = "?"
+      }
+
       return (
         <Card className="listitem">
             <CardHeader
                 avatar={
                   <Avatar aria-label="recipe">
-                    {rec.formats[0].charAt(0)}
+                    {avatarchar}
                   </Avatar>
                 }
                 action={bmicon}
