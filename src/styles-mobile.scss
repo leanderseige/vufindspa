@@ -33,11 +33,26 @@
     }
 
     .stdui {
-        width:24vw;
+        background-color: white;
     }
 
     .mobileonly {
       display:inline-block;
+    }
+
+    .searchbarinput {
+      width:38vw;
+    }
+
+    .searchbarselect {
+      width:24vw;
+    }
+
+    .searchbarbutton {
+      width:18vw;
+    }
+    .searchbarsettings {
+      width:12vw;
     }
 
 }

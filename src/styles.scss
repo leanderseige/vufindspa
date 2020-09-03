@@ -90,12 +90,6 @@ $pad3: 12px;
   width:100vw;
 }
 
-.stdui {
-    height: 48px;
-    background-color: white;
-    vertical-align: top;
-}
-
 .fullwidth {
     width: 100%;
 }
@@ -152,4 +146,26 @@ $pad3: 12px;
   position:absolute;
   bottom:$pad2;
   font-size: 10pt;
+}
+
+.stdui {
+    height: 48px;
+    background-color: white;
+    vertical-align: top;
+    margin-left:$pad1;
+}
+
+.searchbarinput {
+  width:30vw;
+}
+
+.searchbarselect {
+  width:10vw;
+}
+
+.searchbarbutton {
+  width:10vw;
+}
+.searchbarsettings {
+  width:10vw;
 }

@@ -64,14 +64,14 @@ class SearchBar extends React.Component {
     return (
       <div class="allauto">
         <TextField
-            InputProps={{className: "stdui"}}
+            InputProps={{className: "stdui searchbarinput"}}
             size="small" id="outlined-basic" label="Search" variant="outlined"
             onChange={this._handleTextFieldChange}
             defaultValue={this.props.search.lookfor}
         />
         <Select
             variant="outlined"
-            className="stdui"
+            className="stdui searchbarselect"
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={this.state.selectValue}
@@ -83,12 +83,12 @@ class SearchBar extends React.Component {
         </Select>
         <Button
             component={ RLink }
-            className="stdui" to="/find" size="small" variant="contained" color="primary"
+            className="stdui searchbarbutton" to="/find" size="small" variant="contained" color="primary"
             onClick={this._handleButtonClick}
         >
             Find
         </Button>
-        <IconButton className="stdui" onClick={this._handleSettingsClick}>
+        <IconButton className="stdui searchbarsettings" onClick={this._handleSettingsClick}>
           <SettingsIcon />
         </IconButton>
       </div>
