@@ -122,7 +122,7 @@ function reducer(state, action) {
 
 const initial_state = {
     search: {
-        base: 'https://hestia.jmrl.org/findit/api/v1/',
+        base: 'https://api.finna.fi/api/v1/',
         lookfor: 'Shakespeare',
         type: 'AllFields',
         sort: 'relevance',
