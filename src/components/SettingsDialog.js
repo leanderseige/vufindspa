@@ -15,6 +15,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import DialogActions from '@material-ui/core/DialogActions';
+import Typography from '@material-ui/core/Typography';
+import Alert from '@material-ui/lab/Alert';
 
 class SettingsDialog extends React.Component {
 
@@ -54,8 +56,9 @@ class SettingsDialog extends React.Component {
       return (
         <Dialog onClose={() => {this.handleClose()}} aria-labelledby="simple-dialog-title" open={open}>
           <DialogContent>
-            <h1 className="TitleView">Settings</h1>
-            <FormControl component="fieldset">
+              <Typography variant="h3" gutterBottom>Settings</Typography>
+              <Alert severity="warning">Permalinks work with the default server only!</Alert>
+              <FormControl component="fieldset">
                   <RadioGroup aria-label="servers" value={this.state.value} name="servers" onChange={this.handleChange}>
                     {output}
                   </RadioGroup>
