@@ -122,7 +122,7 @@ function reducer(state, action) {
 
 const initial_state = {
     search: {
-        base: 'https://api.finna.fi/api/v1/',
+        base: 'https://vufind.org/advanced_demo/api/v1/',
         lookfor: 'Shakespeare',
         type: 'AllFields',
         sort: 'relevance',
