@@ -16,12 +16,18 @@ class Facet extends React.Component {
     constructor(props) {
         super(props);
         this._handleClick = this._handleClick.bind(this);
+        this._onChange = this._onChange.bind(this);
     }
 
     _handleClick(query) {
         var filter = query.match(/&filter[^&]+/gi)
         console.log(filter)
         store.dispatch({type: 'ADD_SEARCH_FILTER',data: { filter: filter }});
+    }
+
+    _onChange(e,x) {
+      console.log(x)
+
     }
 
     render() {
@@ -39,24 +45,26 @@ class Facet extends React.Component {
         for (var key in this.props.data) {
             let urlObject = url.parse(this.props.data[key].href,false);
             output.push(
-                <Typography>
-                    <Link color="primary" onClick={() => {this._handleClick(urlObject.query)}}>{this.props.data[key].value}</Link>
+                <span key={key}>
+                    <Link color="primary"
+                      onClick={() => {this._handleClick(urlObject.query)}}>{this.props.data[key].value}
+                    </Link>
                     ({this.props.data[key].count})<br /><br />
-                </Typography>
+                </span>
             );
         }
 
         return (
-          <div className="listitem">
-          <Accordion>
+          <Accordion defaultExpanded={false} className="listitem" key={this.props.name} onChange={this._onChange}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography>{labels[this.props.name]}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <div>{output}</div>
+              <Typography>
+                {output}
+              </Typography>
             </AccordionDetails>
-            </Accordion>
-            </div>
+          </Accordion>
         );
     }
 
@@ -65,7 +73,8 @@ class Facet extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        results: state.results
+        results: state.results,
+        flags:  state.flags
     }
 }
 
