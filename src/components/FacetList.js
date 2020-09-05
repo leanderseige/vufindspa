@@ -65,7 +65,7 @@ class FacetList extends React.Component {
             label = label.replace(/\+/g,' ')
             output.push(
                 <Button variant="contained" startIcon={<DeleteIcon />} onClick={() => {this.handleRemove(f)}}>
-                {label}
+                {decodeURI(label)}
                 </Button>
             );
         });
