@@ -31,7 +31,7 @@ You will also see any lint errors in the console.
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Further info in (CRA-README.md)[https://github.com/leanderseige/vufindspa/edit/master/CRA-README.md]
+Further info in CRA-README.md
 
 ## Known Bugs
 
