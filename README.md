@@ -33,4 +33,4 @@ Further info in [[CRA-README.md]]
 
 ## Known Bugs
 
-* Android's Keyboard may ruin layout, use iOS or just fix the responsiveness
+* ~~Android's Keyboard may ruin layout, use iOS or just fix the responsiveness~~ fixed
