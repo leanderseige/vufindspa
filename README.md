@@ -6,7 +6,7 @@ This is an experimental SPA and PWA for VuFind.
 
 https://vufindspa.netlify.app
 
-![Screenhot](VuFindSPA-Screenshot.png)
+![Screenhot](vufindspa.gif)
 
 ## Quick Start
 
